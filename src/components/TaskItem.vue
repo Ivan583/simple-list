@@ -1,3 +1,14 @@
 <template>
-  <li>Task #1</li>
+  <li>{{ elem }}</li>
 </template>
+
+<script>
+export default {
+  props: {
+    elem: {
+      type: Object,
+      required: true
+    }
+  }
+};
+</script>

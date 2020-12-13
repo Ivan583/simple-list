@@ -1,7 +1,6 @@
 <template>
   <ul>
-    <TaskItem />
-    {{ items }}
+    <TaskItem v-for="item in items" :key="item.id" :elem="item" />
   </ul>
 </template>
 
