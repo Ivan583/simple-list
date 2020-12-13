@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <h1>Список задач</h1>
+    <hr />
+    <ul>
+      <li>Task 1</li>
+    </ul>
   </div>
 </template>
 
@@ -7,8 +12,8 @@
 // import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App'
-}
+  name: "App"
+};
 </script>
 
 <style>
