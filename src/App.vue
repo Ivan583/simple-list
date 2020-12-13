@@ -46,8 +46,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 1200px;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: blue;
+  margin: 40px auto 0;
 }
 </style>
