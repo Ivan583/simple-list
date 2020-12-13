@@ -15,6 +15,10 @@
         <span>{{ elem.id }}</span>
       </div>
 
+      <div class="date">
+        <span>{{ localDate }}</span>
+      </div>
+
       <div class="title">
         <span>{{ elem.title }}</span>
       </div>
@@ -32,6 +36,11 @@ export default {
     elem: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    localDate() {
+      return new Date().toLocaleString();
     }
   }
 };
