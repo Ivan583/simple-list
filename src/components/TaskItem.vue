@@ -10,7 +10,7 @@
       <button class="button delete">Delete</button>
     </div>
 
-    <div class="row">
+    <div class="row" :class="{work: inProgress(elem)}">
       <div class="index">
         <span>{{ elem.id }}</span>
       </div>
@@ -38,6 +38,13 @@ export default {
       required: true
     }
   },
+
+  methods: {
+    inProgress(myStage) {
+      return myStage.stage === "in work";
+    }
+  },
+
   computed: {
     localDate() {
       return new Date().toLocaleString();
@@ -60,6 +67,10 @@ li,
   text-align: left;
   margin-left: 0.5rem;
   order: 2;
+}
+
+.work {
+  color: green;
 }
 
 .index {
