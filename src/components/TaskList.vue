@@ -1,12 +1,14 @@
 <template>
   <ul>
     <TaskItem />
+    {{ items }}
   </ul>
 </template>
 
 <script>
 import TaskItem from "@/components/TaskItem.vue";
 export default {
+  props: ["items"],
   components: { TaskItem }
 };
 </script>
