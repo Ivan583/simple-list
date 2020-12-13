@@ -1,11 +1,14 @@
 <template>
   <ul>
-    <li>Task 1</li>
+    <TaskItem />
   </ul>
 </template>
 
 <script>
-export default {};
+import TaskItem from "@/components/TaskItem.vue";
+export default {
+  components: { TaskItem }
+};
 </script>
 
 <style scoped>
