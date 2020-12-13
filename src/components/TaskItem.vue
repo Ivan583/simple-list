@@ -10,7 +10,7 @@
       <button class="button delete">Delete</button>
     </div>
 
-    <div class="row" :class="{work: inProgress(elem)}">
+    <div class="row" :class="{work: inProgress(elem), done: isCompleted(elem)}">
       <div class="index">
         <span>{{ elem.id }}</span>
       </div>
@@ -42,6 +42,9 @@ export default {
   methods: {
     inProgress(myStage) {
       return myStage.stage === "in work";
+    },
+    isCompleted(myStage) {
+      return myStage.stage === "completed";
     }
   },
 
@@ -71,6 +74,11 @@ li,
 
 .work {
   color: green;
+}
+
+.done {
+  color: black;
+  text-decoration: line-through;
 }
 
 .index {
