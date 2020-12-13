@@ -87,4 +87,27 @@ span {
   margin-right: 1rem;
   font-weight: bold;
 }
+
+@media (min-width: 1024px) {
+  .right {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .row {
+    order: 1;
+  }
+
+  .button {
+    margin-right: 0.5rem;
+  }
+
+  .delete {
+    margin-right: 0;
+  }
+
+  .description {
+    flex: 1;
+  }
+}
 </style>
