@@ -2,17 +2,15 @@
   <div id="app">
     <h1>Список задач</h1>
     <hr />
-    <ul>
-      <li>Task 1</li>
-    </ul>
+    <TaskList />
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import TaskList from "@/components/TaskList.vue";
 
 export default {
-  name: "App"
+  components: { TaskList }
 };
 </script>
 
