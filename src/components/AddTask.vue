@@ -2,8 +2,13 @@
   <form @submit.prevent="onSubmit">
     <fieldset>
       <legend>Новая задача</legend>
-      <input type="text" v-model="title" />
-      <input type="text" v-model="description" />
+      <input type="text" v-model="title" class="title" placeholder="Введите title" />
+      <input
+        type="text"
+        v-model="description"
+        class="description"
+        placeholder="Введите description"
+      />
       <button v-show="false" type="submit"></button>
     </fieldset>
   </form>
@@ -34,3 +39,26 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+form {
+  max-width: 500px;
+  margin: 10px auto 20px;
+}
+fieldset,
+input {
+  border: 2px solid green;
+}
+input {
+  display: block;
+  font-size: 1.1rem;
+  margin: 0 auto 0.7rem;
+}
+.title {
+  width: 60%;
+}
+.description {
+  width: 90%;
+  margin-bottom: 0;
+}
+</style>
