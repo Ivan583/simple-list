@@ -2,7 +2,12 @@
   <div id="app">
     <h1>Список задач</h1>
     <hr />
-    <TaskList :items="tasks" @start-task="startTask" @finish-task="finishTask" />
+    <TaskList
+      :items="tasks"
+      @start-task="startTask"
+      @finish-task="finishTask"
+      @remove-task="removeTask"
+    />
   </div>
 </template>
 
@@ -48,6 +53,9 @@ export default {
       this.tasks = this.tasks.map(el =>
         el.id === id ? { ...el, stage: "completed" } : el
       );
+    },
+    removeTask(id) {
+      this.tasks = this.tasks.filter(t => t.id !== id);
     }
   }
 };

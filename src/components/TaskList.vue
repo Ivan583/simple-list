@@ -6,6 +6,7 @@
       :elem="item"
       @start-task="startTask"
       @finish-task="finishTask"
+      @remove-task="removeTask"
     />
   </ul>
 </template>
@@ -22,6 +23,9 @@ export default {
     },
     finishTask(id) {
       this.$emit("finish-task", id);
+    },
+    removeTask(id) {
+      this.$emit("remove-task", id);
     }
   }
 };
