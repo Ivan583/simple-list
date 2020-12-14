@@ -29,6 +29,7 @@ export default {
   methods: {
     addTask(elem) {
       this.tasks.push(elem);
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
 
     startTask(id) {
