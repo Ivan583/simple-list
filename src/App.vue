@@ -3,11 +3,13 @@
     <h1>Список задач</h1>
     <hr />
     <TaskList
+      v-if="tasks.length"
       :items="tasks"
       @start-task="startTask"
       @finish-task="finishTask"
       @remove-task="removeTask"
     />
+    <h2 v-else>Все задачи выполнены</h2>
   </div>
 </template>
 
