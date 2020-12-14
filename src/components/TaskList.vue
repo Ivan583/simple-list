@@ -1,9 +1,10 @@
 <template>
   <ul>
     <TaskItem
-      v-for="item in items"
+      v-for="(item, index) in items"
       :key="item.id"
       :elem="item"
+      :index="index"
       @start-task="startTask"
       @finish-task="finishTask"
       @remove-task="removeTask"

@@ -12,7 +12,7 @@
 
     <div class="row" :class="{work: inProgress(elem), done: isCompleted(elem)}">
       <div class="index">
-        <span>{{ elem.id }}</span>
+        <span>{{ index + 1 }}</span>
       </div>
 
       <div class="date">
@@ -36,7 +36,8 @@ export default {
     elem: {
       type: Object,
       required: true
-    }
+    },
+    index: Number
   },
 
   methods: {
