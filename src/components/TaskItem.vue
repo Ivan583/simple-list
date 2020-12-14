@@ -2,7 +2,7 @@
   <li>
     <div class="left">
       <button class="button start" @click="$emit('start-task', elem.id)">Start</button>
-      <button class="button finish">Finish</button>
+      <button class="button finish" @click="$emit('finish-task', elem.id)">Finish</button>
     </div>
 
     <div class="right">
