@@ -19,45 +19,38 @@ import TaskList from "@/components/TaskList.vue";
 export default {
   data() {
     return {
-      tasks: [
-        {
-          id: 1,
-          title: "продукты",
-          description: "купить хлеб",
-          stage: "pending",
-          editing: false
-        },
-        {
-          id: 2,
-          title: "деловая",
-          description: "сделать проект",
-          stage: "in work",
-          editing: false
-        },
-        {
-          id: 3,
-          title: "питомец",
-          description: "купить корм",
-          stage: "completed",
-          editing: false
-        }
-      ]
+      tasks: []
     };
   },
   components: { TaskList },
+
   methods: {
     startTask(id) {
       this.tasks = this.tasks.map(el =>
         el.id === id ? { ...el, stage: "in work" } : el
       );
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
     finishTask(id) {
       this.tasks = this.tasks.map(el =>
         el.id === id ? { ...el, stage: "completed" } : el
       );
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
     removeTask(id) {
       this.tasks = this.tasks.filter(t => t.id !== id);
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    }
+  },
+
+  mounted() {
+    try {
+      const data = localStorage.getItem("tasks");
+      data ? (this.tasks = JSON.parse(data)) : null;
+    } catch (err) {
+      if (err == QUOTA_EXCEEDED_ERR) {
+        alert("quota exceeded");
+      }
     }
   }
 };
