@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>Список задач</h1>
+    <AddTask />
     <hr />
     <TaskList
       v-if="tasks.length"
@@ -15,6 +16,7 @@
 
 <script>
 import TaskList from "@/components/TaskList.vue";
+import AddTask from "@/components/AddTask.vue";
 
 export default {
   data() {
@@ -22,7 +24,7 @@ export default {
       tasks: []
     };
   },
-  components: { TaskList },
+  components: { TaskList, AddTask },
 
   methods: {
     startTask(id) {
