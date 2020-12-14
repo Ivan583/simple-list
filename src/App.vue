@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Список задач</h1>
     <hr />
-    <TaskList :items="tasks" />
+    <TaskList :items="tasks" @start-task="startTask" />
   </div>
 </template>
 
@@ -37,7 +37,14 @@ export default {
       ]
     };
   },
-  components: { TaskList }
+  components: { TaskList },
+  methods: {
+    startTask(id) {
+      this.tasks = this.tasks.map(el =>
+        el.id === id ? { ...el, stage: "in work" } : el
+      );
+    }
+  }
 };
 </script>
 

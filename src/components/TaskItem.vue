@@ -1,7 +1,7 @@
 <template>
   <li>
     <div class="left">
-      <button class="button start">Start</button>
+      <button class="button start" @click="$emit('start-task', elem.id)">Start</button>
       <button class="button finish">Finish</button>
     </div>
 
