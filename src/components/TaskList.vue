@@ -24,8 +24,9 @@ export default {
     finishTask(id) {
       this.$emit("finish-task", id);
     },
-    removeTask(id) {
-      this.$emit("remove-task", id);
+    removeTask(id, stage) {
+      if (stage === "completed") this.$emit("remove-task", id);
+      else alert("Задача не выполнена!");
     }
   }
 };

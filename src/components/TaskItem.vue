@@ -7,7 +7,7 @@
 
     <div class="right">
       <button class="button edit">Edit</button>
-      <button class="button delete" @click="$emit('remove-task', elem.id)">Delete</button>
+      <button class="button delete" @click="$emit('remove-task', elem.id, elem.stage )">Delete</button>
     </div>
 
     <div class="row" :class="{work: inProgress(elem), done: isCompleted(elem)}">
