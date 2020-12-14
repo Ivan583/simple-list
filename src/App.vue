@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Список задач</h1>
-    <AddTask />
+    <AddTask @add-task="addTask" />
     <hr />
     <TaskList
       v-if="tasks.length"
@@ -27,18 +27,24 @@ export default {
   components: { TaskList, AddTask },
 
   methods: {
+    addTask(elem) {
+      this.tasks.push(elem);
+    },
+
     startTask(id) {
       this.tasks = this.tasks.map(el =>
         el.id === id ? { ...el, stage: "in work" } : el
       );
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
+
     finishTask(id) {
       this.tasks = this.tasks.map(el =>
         el.id === id ? { ...el, stage: "completed" } : el
       );
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
+
     removeTask(id) {
       this.tasks = this.tasks.filter(t => t.id !== id);
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
