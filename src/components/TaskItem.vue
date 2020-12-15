@@ -31,7 +31,7 @@
     </div>
     <div class="edit-data">
       <input type="text" class="title" />
-      <input type="text" class="description" />
+      <input type="text" class="text" />
     </div>
   </li>
 </template>
@@ -87,14 +87,25 @@ li,
 }
 
 .edit-data {
-  max-width: 500px;
-  margin: -0.5rem 0 0.5rem;
+  width: 100%;
 }
 
 input {
   font-size: 1.1rem;
-  border: 2px solid blue;
+  border: 1px solid blue;
   margin-right: 1rem;
+  margin-bottom: 0.3rem;
+  width: 100%;
+}
+
+@media (min-width: 550px) {
+  input.title {
+    width: 30%;
+  }
+
+  input.text {
+    width: 60%;
+  }
 }
 
 .work {
