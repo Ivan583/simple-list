@@ -9,6 +9,7 @@
       @finish-task="finishTask"
       @remove-task="removeTask"
       @edit-task="editTask"
+      @new-data="newData"
     />
   </ul>
 </template>
@@ -33,6 +34,9 @@ export default {
     editTask(id, stage) {
       if (stage !== "completed") this.$emit("edit-task", id);
       else alert("Выполненная задача редактированию не подлежит.");
+    },
+    newData(el) {
+      this.$emit("new-data", el);
     }
   }
 };

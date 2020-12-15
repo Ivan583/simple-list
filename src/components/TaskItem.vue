@@ -30,8 +30,8 @@
       </div>
     </div>
     <div v-else class="edit-data">
-      <input type="text" class="title" />
-      <input type="text" class="text" />
+      <input type="text" class="title" v-model="title" @keyup.enter="newData(elem.id)" />
+      <input type="text" class="text" v-model="description" @keyup.enter="newData(elem.id)" />
     </div>
   </li>
 </template>
@@ -46,12 +46,28 @@ export default {
     index: Number
   },
 
+  data() {
+    return {
+      title: "",
+      description: ""
+    };
+  },
+
   methods: {
     inProgress(myStage) {
       return myStage.stage === "in work";
     },
     isCompleted(myStage) {
       return myStage.stage === "completed";
+    },
+    newData(id) {
+      if (this.title && this.description) {
+        this.$emit("new-data", {
+          id,
+          title: this.title,
+          description: this.description
+        });
+      }
     }
   },
 

@@ -10,6 +10,7 @@
       @finish-task="finishTask"
       @remove-task="removeTask"
       @edit-task="editTask"
+      @new-data="newData"
     />
     <h2 v-else>Все задачи выполнены</h2>
   </div>
@@ -56,6 +57,16 @@ export default {
       this.tasks = this.tasks.map(el =>
         el.id === id ? { ...el, editing: true } : el
       );
+    },
+    newData(el) {
+      const id = el.id;
+      const title = el.title;
+      const description = el.description;
+
+      this.tasks = this.tasks.map(p =>
+        p.id === id ? { ...p, title, description, editing: false } : p
+      );
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
     }
   },
 
