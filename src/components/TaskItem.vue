@@ -7,7 +7,7 @@
       </div>
 
       <div class="right">
-        <button class="button edit" @click="$emit('edit-task', elem.id)">Edit</button>
+        <button class="button edit" @click="$emit('edit-task', elem.id, elem.stage)">Edit</button>
         <button class="button delete" @click="$emit('remove-task', elem.id, elem.stage )">Delete</button>
       </div>
 

@@ -30,8 +30,9 @@ export default {
       if (stage === "completed") this.$emit("remove-task", id);
       else alert("Задача не выполнена!");
     },
-    editTask(id) {
-      this.$emit("edit-task", id);
+    editTask(id, stage) {
+      if (stage !== "completed") this.$emit("edit-task", id);
+      else alert("Выполненная задача редактированию не подлежит.");
     }
   }
 };
