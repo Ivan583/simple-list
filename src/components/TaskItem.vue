@@ -1,31 +1,37 @@
 <template>
   <li>
-    <div class="left">
-      <button class="button start" @click="$emit('start-task', elem.id)">Start</button>
-      <button class="button finish" @click="$emit('finish-task', elem.id)">Finish</button>
+    <div class="container">
+      <div class="left">
+        <button class="button start" @click="$emit('start-task', elem.id)">Start</button>
+        <button class="button finish" @click="$emit('finish-task', elem.id)">Finish</button>
+      </div>
+
+      <div class="right">
+        <button class="button edit">Edit</button>
+        <button class="button delete" @click="$emit('remove-task', elem.id, elem.stage )">Delete</button>
+      </div>
+
+      <div class="row" :class="{work: inProgress(elem), done: isCompleted(elem)}">
+        <div class="index">
+          <span>{{ index + 1 }}</span>
+        </div>
+
+        <div class="date">
+          <span>{{ localDate }}</span>
+        </div>
+
+        <div>
+          <span>{{ elem.title }}</span>
+        </div>
+
+        <div class="description">
+          <span>{{ elem.description }}</span>
+        </div>
+      </div>
     </div>
-
-    <div class="right">
-      <button class="button edit">Edit</button>
-      <button class="button delete" @click="$emit('remove-task', elem.id, elem.stage )">Delete</button>
-    </div>
-
-    <div class="row" :class="{work: inProgress(elem), done: isCompleted(elem)}">
-      <div class="index">
-        <span>{{ index + 1 }}</span>
-      </div>
-
-      <div class="date">
-        <span>{{ localDate }}</span>
-      </div>
-
-      <div class="title">
-        <span>{{ elem.title }}</span>
-      </div>
-
-      <div class="description">
-        <span>{{ elem.description }}</span>
-      </div>
+    <div class="edit-data">
+      <input type="text" />
+      <input type="text" />
     </div>
   </li>
 </template>
