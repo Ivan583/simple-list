@@ -9,6 +9,7 @@
       @start-task="startTask"
       @finish-task="finishTask"
       @remove-task="removeTask"
+      @edit-task="editTask"
     />
     <h2 v-else>Все задачи выполнены</h2>
   </div>
@@ -49,6 +50,12 @@ export default {
     removeTask(id) {
       this.tasks = this.tasks.filter(t => t.id !== id);
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    },
+
+    editTask(id) {
+      this.tasks = this.tasks.map(el =>
+        el.id === id ? { ...el, editing: true } : el
+      );
     }
   },
 

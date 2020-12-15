@@ -8,6 +8,7 @@
       @start-task="startTask"
       @finish-task="finishTask"
       @remove-task="removeTask"
+      @edit-task="editTask"
     />
   </ul>
 </template>
@@ -28,6 +29,9 @@ export default {
     removeTask(id, stage) {
       if (stage === "completed") this.$emit("remove-task", id);
       else alert("Задача не выполнена!");
+    },
+    editTask(id) {
+      this.$emit("edit-task", id);
     }
   }
 };
