@@ -20,7 +20,7 @@
           <span>{{ localDate }}</span>
         </div>
 
-        <div>
+        <div class="title">
           <span>{{ elem.title }}</span>
         </div>
 
@@ -30,8 +30,8 @@
       </div>
     </div>
     <div class="edit-data">
-      <input type="text" />
-      <input type="text" />
+      <input type="text" class="title" />
+      <input type="text" class="description" />
     </div>
   </li>
 </template>
@@ -65,6 +65,7 @@ export default {
 
 <style scoped>
 li,
+.container,
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -72,11 +73,28 @@ li,
   margin-bottom: 0.75rem;
 }
 
+.container {
+  min-width: 100%;
+  border: 1px solid green;
+  padding: 0.5rem 2rem 0;
+}
+
 .row {
   line-height: 1.5rem;
   text-align: left;
   margin-left: 0.5rem;
   order: 2;
+}
+
+.edit-data {
+  max-width: 500px;
+  margin: -0.5rem 0 0.5rem;
+}
+
+input {
+  font-size: 1.1rem;
+  border: 2px solid blue;
+  margin-right: 1rem;
 }
 
 .work {
