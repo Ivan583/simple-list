@@ -1,6 +1,6 @@
 <template>
   <li>
-    <div class="container">
+    <div v-if="!elem.editing" class="container">
       <div class="left">
         <button class="button start" @click="$emit('start-task', elem.id)">Start</button>
         <button class="button finish" @click="$emit('finish-task', elem.id)">Finish</button>
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div class="edit-data">
+    <div v-else class="edit-data">
       <input type="text" class="title" />
       <input type="text" class="text" />
     </div>
@@ -70,7 +70,7 @@ li,
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .container {
