@@ -47,9 +47,10 @@ export default {
   },
 
   data() {
+    const { title, description } = this.elem;
     return {
-      title: "",
-      description: ""
+      title,
+      description
     };
   },
 
