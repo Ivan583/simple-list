@@ -9,6 +9,7 @@
       <option value="in work">В работе</option>
       <option value="completed">Выполненные</option>
     </select>
+    <input type="text" v-model.lazy="titleFilter" />
     <hr />
     <TaskList
       v-if="filteresTasks.length"
@@ -33,18 +34,21 @@ export default {
     return {
       tasks: [],
       statusFilter: filterStatuses.ALL,
-      filterStatuses
+      filterStatuses,
+      titleFilter: ""
     };
   },
   components: { TaskList, AddTask },
 
   computed: {
     filteresTasks() {
-      return this.tasks.filter(t =>
-        this.statusFilter === filterStatuses.ALL
-          ? t
-          : t.stage === this.statusFilter
-      );
+      return this.tasks
+        .filter(t =>
+          this.statusFilter === filterStatuses.ALL
+            ? t
+            : t.stage === this.statusFilter
+        )
+        .filter(t => t.title.includes(this.titleFilter));
     }
   },
 
