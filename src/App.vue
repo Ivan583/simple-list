@@ -9,7 +9,8 @@
       <option value="in work">В работе</option>
       <option value="completed">Выполненные</option>
     </select>
-    <input type="text" v-model.lazy="titleFilter" />
+    <label data-tooltip="Введите заголовок или его часть и кликните вне поля ввода">Title</label>
+    <input type="text" placeholder="наведитесь на label" v-model.lazy="titleFilter" />
     <hr />
     <TaskList
       v-if="filteresTasks.length"
@@ -116,5 +117,30 @@ export default {
   text-align: center;
   color: blue;
   margin: 40px auto 0;
+}
+</style>
+
+<style scoped>
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  width: 250px;
+  left: 0;
+  top: 0;
+  padding: 0.5em;
+  color: #fff;
+  background-color: blueviolet;
+  pointer-events: none;
+  opacity: 0;
+  transition: 1s;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+  top: 2em;
 }
 </style>
