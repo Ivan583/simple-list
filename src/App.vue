@@ -3,14 +3,28 @@
     <h1>Список задач</h1>
     <AddTask @add-task="addTask" />
 
-    <select v-model="statusFilter">
-      <option value="all">Все</option>
-      <option value="pending">На очереди</option>
-      <option value="in work">В работе</option>
-      <option value="completed">Выполненные</option>
-    </select>
-    <label data-tooltip="Введите заголовок или его часть и кликните вне поля ввода">Title</label>
-    <input type="text" placeholder="наведитесь на label" v-model.lazy="titleFilter" />
+    <form>
+      <fieldset>
+        <legend>Фильтры</legend>
+
+        <label>Status</label>
+        <select v-model="statusFilter">
+          <option value="all">Все</option>
+          <option value="pending">На очереди</option>
+          <option value="in work">В работе</option>
+          <option value="completed">Выполненные</option>
+        </select>
+
+        <label data-tooltip="Введите заголовок или его часть и кликните вне поля ввода">Title</label>
+        <input
+          type="text"
+          class="title"
+          placeholder="наведитесь на label"
+          v-model.lazy="titleFilter"
+        />
+      </fieldset>
+    </form>
+
     <hr />
     <TaskList
       v-if="filteresTasks.length"
@@ -121,6 +135,27 @@ export default {
 </style>
 
 <style scoped>
+form {
+  max-width: 500px;
+  margin: -10px auto 20px;
+}
+
+fieldset,
+select,
+input {
+  border: 2px solid green;
+  font-size: 1rem;
+}
+
+select {
+  margin-bottom: 0.3rem;
+}
+
+select,
+label {
+  margin-right: 0.5rem;
+}
+
 [data-tooltip] {
   position: relative;
 }

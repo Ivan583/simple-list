@@ -41,10 +41,6 @@ export default {
 </script>
 
 <style scoped>
-form {
-  max-width: 500px;
-  margin: 10px auto 20px;
-}
 fieldset,
 input {
   border: 2px solid green;
