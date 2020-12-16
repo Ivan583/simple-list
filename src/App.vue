@@ -171,6 +171,19 @@ label {
   margin-right: 0.5rem;
 }
 
+.sort {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+}
+
+@media (min-width: 380px) {
+  .sort {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
 [data-tooltip] {
   position: relative;
 }
