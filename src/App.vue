@@ -5,7 +5,7 @@
 
     <form>
       <fieldset>
-        <legend>Фильтры</legend>
+        <legend>Сортировка и фильтры</legend>
 
         <label>Status</label>
         <select v-model="statusFilter">
@@ -22,6 +22,20 @@
           placeholder="наведитесь на label"
           v-model.lazy="titleFilter"
         />
+        <div class="sort">
+          <div>
+            <input type="radio" id="date" />
+            <label for="date">По дате</label>
+          </div>
+          <div>
+            <input type="radio" id="title" />
+            <label for="title">По заголовку</label>
+          </div>
+          <div>
+            <input type="radio" id="status" />
+            <label for="status"></label>По статусу
+          </div>
+        </div>
       </fieldset>
     </form>
 
@@ -50,7 +64,8 @@ export default {
       tasks: [],
       statusFilter: filterStatuses.ALL,
       filterStatuses,
-      titleFilter: ""
+      titleFilter: "",
+      order: {}
     };
   },
   components: { TaskList, AddTask },
