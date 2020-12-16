@@ -2,10 +2,17 @@
   <div id="app">
     <h1>Список задач</h1>
     <AddTask @add-task="addTask" />
+
+    <select v-model="statusFilter">
+      <option value="all">Все</option>
+      <option value="pending">На очереди</option>
+      <option value="in work">В работе</option>
+      <option value="completed">Выполненные</option>
+    </select>
     <hr />
     <TaskList
-      v-if="tasks.length"
-      :items="tasks"
+      v-if="filteresTasks.length"
+      :items="filteresTasks"
       @start-task="startTask"
       @finish-task="finishTask"
       @remove-task="removeTask"
@@ -19,14 +26,27 @@
 <script>
 import TaskList from "@/components/TaskList.vue";
 import AddTask from "@/components/AddTask.vue";
+import { filterStatuses } from "@/constants";
 
 export default {
   data() {
     return {
-      tasks: []
+      tasks: [],
+      statusFilter: filterStatuses.ALL,
+      filterStatuses
     };
   },
   components: { TaskList, AddTask },
+
+  computed: {
+    filteresTasks() {
+      return this.tasks.filter(t =>
+        this.statusFilter === filterStatuses.ALL
+          ? t
+          : t.stage === this.statusFilter
+      );
+    }
+  },
 
   methods: {
     addTask(elem) {
