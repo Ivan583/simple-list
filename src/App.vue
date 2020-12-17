@@ -24,15 +24,15 @@
         />
         <div class="sort">
           <div>
-            <input type="radio" id="date" />
+            <input type="radio" :value="order.date" v-model="order.method" id="date" />
             <label for="date">По дате</label>
           </div>
           <div>
-            <input type="radio" id="title" />
+            <input type="radio" :value="order.title" v-model="order.method" id="title" />
             <label for="title">По заголовку</label>
           </div>
           <div>
-            <input type="radio" id="status" />
+            <input type="radio" :value="order.status" v-model="order.method" id="status" />
             <label for="status"></label>По статусу
           </div>
         </div>
@@ -41,8 +41,8 @@
 
     <hr />
     <TaskList
-      v-if="filteresTasks.length"
-      :items="filteresTasks"
+      v-if="filteredTasks.length"
+      :items="filteredTasks"
       @start-task="startTask"
       @finish-task="finishTask"
       @remove-task="removeTask"
@@ -56,7 +56,7 @@
 <script>
 import TaskList from "@/components/TaskList.vue";
 import AddTask from "@/components/AddTask.vue";
-import { filterStatuses } from "@/constants";
+import { filterStatuses, sortStatuses } from "@/constants";
 
 export default {
   data() {
@@ -65,13 +65,19 @@ export default {
       statusFilter: filterStatuses.ALL,
       filterStatuses,
       titleFilter: "",
-      order: {}
+      sortStatuses,
+      order: {
+        method: sortStatuses.BY_DATE,
+        date: sortStatuses.BY_DATE,
+        title: sortStatuses.BY_TITLE,
+        status: sortStatuses.BY_STATUS
+      }
     };
   },
   components: { TaskList, AddTask },
 
   computed: {
-    filteresTasks() {
+    filteredTasks() {
       return this.tasks
         .filter(t =>
           this.statusFilter === filterStatuses.ALL
