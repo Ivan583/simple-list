@@ -57,6 +57,7 @@
 import TaskList from "@/components/TaskList.vue";
 import AddTask from "@/components/AddTask.vue";
 import { filterStatuses, sortStatuses } from "@/constants";
+import { sortByTitle, sortByStatus, sortByDate } from "@/utils";
 
 export default {
   data() {
@@ -78,13 +79,25 @@ export default {
 
   computed: {
     filteredTasks() {
-      return this.tasks
+      let arr = this.tasks
         .filter(t =>
           this.statusFilter === filterStatuses.ALL
             ? t
             : t.stage === this.statusFilter
         )
         .filter(t => t.title.includes(this.titleFilter));
+
+      if (arr) {
+        let sortedArray = arr.slice(0);
+        switch (this.order.method) {
+          case sortStatuses.BY_TITLE:
+            return sortedArray.sort(sortByTitle);
+          case sortStatuses.BY_STATUS:
+            return sortedArray.sort(sortByStatus);
+          default:
+            return sortedArray.sort(sortByDate);
+        }
+      }
     }
   },
 
